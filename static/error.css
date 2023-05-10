@@ -1,0 +1,25 @@
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.error-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.error-container p {
+  font-weight: bold;
+  color: #ff0000;
+}
+
+.error-container a {
+  color: #333;
+  text-decoration: underline;
+}

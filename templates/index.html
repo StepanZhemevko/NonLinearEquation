@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Newton Method Solver</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-column">
+        <h1>Newton Method Solver</h1>
+        <form method="POST">
+          <!-- Equation input field -->
+          <label for="equation">Equation:</label>
+          <input type="text" id="equation" name="equation" value="{{ equation|default('x**2 - 1') }}" required><br><br>
+          <!-- Initial guess input field -->
+          <label for="initial">Initial guess:</label>
+          <input type="text" id="initial" name="initial" value="{{ initial|default('1') }}"><br><br>
+          <!-- Tolerance input field -->
+          <label for="tolerance">Tolerance:</label>
+          <input type="text" id="tolerance" name="tolerance" value="{{ tolerance|default('1e-6') }}"><br><br>
+          <!-- Max iterations input field -->
+          <label for="max_iterations">Max iterations:</label>
+          <input type="text" id="max_iterations" name="max_iterations" value="{{ max_iterations|default('100') }}"><br><br>
+          <input type="submit" value="Solve">
+        </form>
+      </div>
+      <div class="right-column">
+        <div class="graph-container">
+          <h2>Graph of the Function</h2>
+          <div class="graph">
+            <img src="data:image/png;base64,{{ graph_data }}" alt="Graph of the Function">
+          </div>
+        </div>
+        <div class="table-container">
+          <h2>Iteration Errors</h2>
+          <table>
+            <tr>
+              <th>Iteration</th>
+              <th>Error</th>
+            </tr>
+            {% for iteration, error in errors %}
+              <tr>
+                <td>{{ iteration }}</td>
+                <td>{{ error }}</td>
+              </tr>
+            {% endfor %}
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
